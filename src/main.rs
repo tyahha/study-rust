@@ -1,9 +1,9 @@
-fn five() -> i32 {
-    5
-}
-
 fn main() {
-    let x = five();
+    let number = 3;
 
-    println!("The value of x is: {}", x);
+    if number < 5 {
+        println!("condition was true");
+    } else {
+        println!("condition was false");
+    }
 }
