@@ -1,6 +1,6 @@
 fn main() {
-    for number in (1..4).rev() {
-        println!("{}!", number);
-    }
-    println!("LIFTOFF!!");
+    let s1 = String::from("hello");
+    let s2 = s1;
+
+    println!("{}, world", s1);
 }
