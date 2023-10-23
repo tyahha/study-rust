@@ -1,6 +1,6 @@
 fn main() {
-    let s1 = String::from("hello");
-    let s2 = s1;
+    let x = String::from("hello");
+    let y = x.clone();
 
-    println!("{}, world", s1);
+    println!("x = {}, y = {}", x, y);
 }
