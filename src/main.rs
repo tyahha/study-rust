@@ -1,11 +1,12 @@
 fn main() {
     let mut s = String::from("hello");
 
-    change(&mut s);
+    {
+        let r1 = &mut s;
+        r1.push_str(", world!");
+    }
+    let r2 = &mut s;
+    r2.push_str("!!!");
 
-    println!("{}", s);
-}
-
-fn change(some_string: &mut String) {
-    some_string.push_str(", world");
+    println!("{}", r2);
 }
