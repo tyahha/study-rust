@@ -20,6 +20,14 @@ fn main () {
 
     println!("{:?}", user1);
     println!("{:?}", build_user("aaa", "bbb"));
+
+    let user2 = User {
+        email: String::from("ccc"),
+        username: String::from("ddd"),
+        ..user1
+    };
+
+    println!("create user by spread operator {:?}", user2);
 }
 
 fn build_user(email: &str, username: &str) -> User {
