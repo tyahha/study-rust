@@ -19,4 +19,14 @@ fn main () {
     user1.email = String::from("anotheremail@example.com");
 
     println!("{:?}", user1);
+    println!("{:?}", build_user("aaa", "bbb"));
+}
+
+fn build_user(email: &str, username: &str) -> User {
+    User {
+        email: String::from(email),
+        username: String::from(username),
+        active: true,
+        sign_in_count: 1,
+    }
 }
