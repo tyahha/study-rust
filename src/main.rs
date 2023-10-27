@@ -1,4 +1,13 @@
 fn main() {
-    let i1: Option<i8> = Some(3);
-    println!("{:?}", i1);
+    let v = Some(3);
+
+    if let Some(3) = v {
+        println!("three");
+    }
+
+    if let Some(5) = v {
+        println!("file");
+    } else {
+        println!("no five");
+    }
 }
