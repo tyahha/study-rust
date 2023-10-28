@@ -38,12 +38,13 @@ pub mod back_of_house {
 }
 
 pub fn eat_at_restaurant() {
-    use back_of_house::*;
+    use back_of_house::Appetizer;
+    use back_of_house::Breakfast as Hoge;
     use front_of_house::hosting;
 
     hosting::add_to_watitlist();
 
-    let mut meal = Breakfast::summer("Rye");
+    let mut meal = Hoge::summer("Rye");
     meal.toast = String::from("Wheat");
     println!("I'd like {} toast please", meal.toast);
 
