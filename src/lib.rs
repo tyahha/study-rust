@@ -38,8 +38,7 @@ pub mod back_of_house {
 }
 
 pub fn eat_at_restaurant() {
-    use back_of_house::Appetizer;
-    use back_of_house::Breakfast as Hoge;
+    use back_of_house::{Appetizer, Breakfast as Hoge};
     use front_of_house::hosting;
 
     hosting::add_to_watitlist();
