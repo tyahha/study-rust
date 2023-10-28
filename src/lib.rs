@@ -6,7 +6,10 @@ mod front_of_house {
     }
 
     pub mod serving {
-        fn take_order() {}
+        fn take_order() {
+            take_payment();
+            super::hosting::add_to_watitlist();
+        }
         fn serve_order() {}
         fn take_payment() {}
     }
