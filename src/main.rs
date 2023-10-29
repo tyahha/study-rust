@@ -1,3 +1,6 @@
+mod collection;
+
 fn main() {
-    println!("cleaned");
+    println!("--- 8. Common collections");
+    collection::collection_main();
 }
