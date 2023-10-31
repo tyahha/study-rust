@@ -6,5 +6,5 @@ fn main() {
     collection::collection_main();
 
     println!("--- 9. Error handling");
-    error::error_main();
+    error::error_main(false);
 }
