@@ -1,5 +1,6 @@
 use std::fs::File;
-use std::io::ErrorKind;
+use std::io;
+use std::io::{ErrorKind, Read};
 
 pub fn error_main(do_panic: bool) {
     if do_panic {
@@ -18,4 +19,14 @@ pub fn error_main(do_panic: bool) {
             panic!("There was a problem opening the file: {:?}", error);
         }
     };
+
+    let read_name = read_username_from_file();
+    println!("read_name: {:?}", read_name);
+}
+
+fn read_username_from_file() -> Result<String, io::Error> {
+    let mut f = File::open("hello.txt")?;
+    let mut s = String::new();
+    f.read_to_string(&mut s)?;
+    Ok(s)
 }
