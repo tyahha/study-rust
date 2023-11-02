@@ -1,3 +1,5 @@
+use std::fmt::{write, Display, Formatter, Pointer, Write};
+
 pub trait Summary {
     fn summarize(&self) -> String {
         String::from("default")
@@ -32,6 +34,51 @@ impl Summary for Tweet {
 
 pub struct Hoge {}
 impl Summary for Hoge {}
+impl Display for Hoge {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        f.write_str("hoge")
+    }
+}
+
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+pub fn notify2<T: Summary, U: Summary>(item1: &T, item2: &U) {
+    println!(
+        "Breaking news2! {}, {}",
+        item1.summarize(),
+        item2.summarize()
+    );
+}
+
+pub fn notify3<T: Summary + Display>(item: &T) {
+    println!("summary: {}, value: {}", item.summarize(), item);
+}
+
+fn largest<T: PartialOrd + Copy>(list: &[T]) -> T {
+    let mut largest = list[0];
+
+    for &item in list {
+        if item > largest {
+            largest = item;
+        }
+    }
+
+    largest
+}
+
+fn largest2<T: PartialOrd>(list: &[T]) -> &T {
+    let mut largest = &list[0];
+
+    for item in list {
+        if item > largest {
+            largest = item;
+        }
+    }
+
+    largest
+}
 
 pub fn trait_main() {
     let tweet = Tweet {
@@ -44,4 +91,20 @@ pub fn trait_main() {
 
     let hoge = Hoge {};
     println!("Hoge, {}", hoge.summarize());
+
+    notify(&tweet);
+    notify(&hoge);
+    notify2(&tweet, &hoge);
+    notify3(&hoge);
+
+    let number_list = vec![34, 50, 25, 100, 65];
+
+    let result = largest(&number_list);
+    println!("The largest number is {}", result);
+
+    let char_list = vec!['y', 'm', 'a', 'q'];
+    let result = largest(&char_list);
+    println!("The largest char is {}", result);
+    let result = largest2(&char_list);
+    println!("The largest char is {}", result);
 }
