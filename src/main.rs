@@ -1,5 +1,6 @@
 mod collection;
 mod error;
+mod lifetime;
 mod trait_sample;
 
 fn main() {
@@ -11,4 +12,7 @@ fn main() {
 
     println!("--- 10.2 Trait");
     trait_sample::trait_main();
+
+    println!("--- 10.3 lifetime");
+    lifetime::lifetime_main();
 }
