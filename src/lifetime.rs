@@ -13,3 +13,12 @@ pub fn lifetime_main() {
     let result = longest(string1.as_str(), string2);
     println!("The longest is {}", result);
 }
+
+#[test]
+fn longest_test() {
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+
+    let result = longest(string1.as_str(), string2);
+    assert_eq!(result, "abcd");
+}
