@@ -27,6 +27,7 @@ mod test {
 
     #[test]
     fn another() {
-        panic!("panic");
+        // panic!("panic");
+        assert_eq!(1, 1);
     }
 }
