@@ -1,3 +1,4 @@
+mod closure;
 mod collection;
 mod error;
 mod lifetime;
@@ -16,6 +17,9 @@ fn main() {
 
     println!("--- 10.3 lifetime");
     lifetime::lifetime_main();
+
+    println!("--- 13.1 closure");
+    closure::closure_main();
 }
 
 #[cfg(test)]
