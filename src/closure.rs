@@ -1,27 +1,30 @@
 use std::collections::HashMap;
+use std::hash::Hash;
 use std::thread;
 use std::time::Duration;
 
-struct Cacher<T>
+struct Cacher<T, A>
 where
-    T: Fn(u32) -> u32,
+    T: Fn(A) -> A,
+    A: Eq + Hash + Copy,
 {
     calculation: T,
-    values: HashMap<u32, u32>,
+    values: HashMap<A, A>,
 }
 
-impl<T> Cacher<T>
+impl<T, A> Cacher<T, A>
 where
-    T: Fn(u32) -> u32,
+    T: Fn(A) -> A,
+    A: Eq + Hash + Copy,
 {
-    fn new(calculation: T) -> Cacher<T> {
+    fn new(calculation: T) -> Cacher<T, A> {
         Cacher {
             calculation,
             values: HashMap::new(),
         }
     }
 
-    fn value(&mut self, arg: u32) -> u32 {
+    fn value(&mut self, arg: A) -> A {
         match self.values.get(&arg) {
             Some(&v) => v,
             None => {
@@ -78,5 +81,13 @@ mod cacher_tests {
         cacher.value(1);
         let v2 = cacher.value(2);
         assert_eq!(v2, 2);
+    }
+
+    #[test]
+    fn test_cacher_with_usize() {
+        let arg: usize = 1;
+        let mut cacher = Cacher::new(|v| v);
+        let v = cacher.value(arg);
+        assert_eq!(arg, v);
     }
 }
