@@ -5,3 +5,13 @@ pub fn iterator_main() {
         println!("Got: {}", v);
     }
 }
+
+#[test]
+fn iterator_test() {
+    let v = vec![1, 2, 3];
+    let mut it = v.iter();
+    assert_eq!(it.next(), Some(&1));
+    assert_eq!(it.next(), Some(&2));
+    assert_eq!(it.next(), Some(&3));
+    assert_eq!(it.next(), None);
+}
