@@ -1,6 +1,7 @@
 mod closure;
 mod collection;
 mod error;
+mod iterator;
 mod lifetime;
 mod test_sample;
 mod trait_sample;
@@ -20,6 +21,9 @@ fn main() {
 
     println!("--- 13.1 closure");
     closure::closure_main();
+
+    println!("--- 13.2 iterator");
+    iterator::iterator_main();
 }
 
 #[cfg(test)]
