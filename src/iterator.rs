@@ -24,4 +24,16 @@ mod iterator_test {
         let s: i32 = it.sum();
         assert_eq!(s, 6);
     }
+
+    fn map() {
+        let v = vec![1, 2, 3];
+        let v2: Vec<_> = v.iter().map(|x| x + 1).collect();
+        assert_eq!(v2, [2, 3, 4]);
+    }
+
+    fn filter() {
+        let v = vec![10, 2, 10];
+        let v2: Vec<_> = v.iter().filter(|&&x| x == 10).map(|&x| x).collect();
+        assert_eq!(v2, [10, 10]);
+    }
 }
